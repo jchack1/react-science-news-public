@@ -4,4 +4,5 @@ React Router handles routing between the Home and About pages.
 
 You may view the deployed app on Heroku: https://react-science-news.herokuapp.com/
 
+Very helpful youtube tutorial for connecting React with Node: https://www.youtube.com/watch?v=kJA9rDX7azM
 

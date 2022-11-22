@@ -1,13 +1,19 @@
 const express = require("express");
 const request = require("request");
-const dotenv = require("dotenv").config();
 const path = require("path");
 let port = process.env.PORT || 3000;
 const app = express();
-const apiKey = process.env.REACT_APP_SCIENCE_NEWS_KEY;
-
+const cors = require("cors");
 //for dev purposes: // "proxy": "http://localhost:5000",  in package.json
 //this is port 5000, react app is port 3000
+
+//front end and back end use different urls on render.com
+//need to specify that the front end url is allowed to make requests to avoid cors error
+app.use(
+  cors({
+    origin: process.env.ORIGIN,
+  })
+);
 
 app.get("/getArticles", (req, res) => {
   request(
@@ -19,7 +25,7 @@ app.get("/getArticles", (req, res) => {
 
         res.send({ articles });
       } else if (error) {
-        console.log(error);
+        res.send({message: error});
       }
     }
   );

@@ -3,6 +3,7 @@ import moment from "moment";
 import imageIcon from "../../img/Image-Icon.svg";
 
 const CardItem = ({ item }) => {
+  const missing = item.image.includes("missing-image");
   const imgUrl = item.image;
   const imgStyle = {
     backgroundImage: `url(${imgUrl})`,
@@ -12,7 +13,7 @@ const CardItem = ({ item }) => {
   };
   return (
     <div className="card">
-      {item.image ? (
+      {item.image && !missing ? (
         <div className="card-img" style={imgStyle}></div>
       ) : (
         <div className="no-image">
